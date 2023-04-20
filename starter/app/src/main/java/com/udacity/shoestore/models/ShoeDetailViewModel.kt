@@ -9,7 +9,8 @@ class ShoeDetailViewModel(shoes: Array<Shoe>?) : ViewModel() {
     val shoe: LiveData<Array<Shoe>>
         get() = _listShoe
 
-    private val _shoeData: Shoe = Shoe("Shoe A", 0.0, "Company A", "Description A")
+    val shoeData: Shoe = Shoe("", 0.0, "", "")
+    val size: String = ""
 
 
     init {
@@ -21,26 +22,10 @@ class ShoeDetailViewModel(shoes: Array<Shoe>?) : ViewModel() {
 
     }
 
-    fun setName(newName: String) {
-        _shoeData.name = newName
-    }
-
-    fun setCompany(newCompany: String) {
-        _shoeData.company = newCompany
-    }
-
-    fun setSize(newSize: String) {
-        if (newSize != "") {
-            _shoeData.size = newSize.toDouble()
-        }
-
-    }
-
-    fun setDescription(newDescription: String) {
-        _shoeData.description = newDescription
-    }
-
     fun onSave() {
-        _listShoe.value = _listShoe.value?.plus(_shoeData)
+        if (size != "") {
+            shoeData.size = size.toDouble()
+        }
+        _listShoe.value = _listShoe.value?.plus(shoeData)
     }
 }

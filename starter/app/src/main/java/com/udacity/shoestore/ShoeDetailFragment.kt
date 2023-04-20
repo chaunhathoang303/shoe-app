@@ -43,10 +43,6 @@ class ShoeDetailFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.saveButton.setOnClickListener { view: View ->
-            viewModel.setCompany(binding.editTextCompany.text.toString())
-            viewModel.setName(binding.editTextName.text.toString())
-            viewModel.setSize(binding.editTextSize.text.toString())
-            viewModel.setDescription(binding.editTextDescription.text.toString())
             viewModel.onSave()
             Navigation.findNavController(view)
                 .navigate(
