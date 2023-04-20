@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # README Template
 
 Below is a template provided for use when building your README file for students.
@@ -51,6 +51,3 @@ This section should contain all the student deliverables for this project.
 Include all items used to build project.
 
 ## License
-=======
-# shoe-app
->>>>>>> ca23287b70772096bdef84bbe658ab5bc799c780
