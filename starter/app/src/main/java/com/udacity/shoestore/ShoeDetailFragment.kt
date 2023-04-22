@@ -6,20 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
-import com.udacity.shoestore.models.ShoeDetailViewModel
-import com.udacity.shoestore.models.ShoeDetailViewModelFactory
+import com.udacity.shoestore.models.ShoeViewModel
 
 class ShoeDetailFragment : Fragment() {
 
-    private lateinit var viewModel: ShoeDetailViewModel
-
     private lateinit var binding: FragmentShoeDetailBinding
 
-    private lateinit var viewDetailModelFactory: ShoeDetailViewModelFactory
+    private val sharedViewModel: ShoeViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -31,32 +27,19 @@ class ShoeDetailFragment : Fragment() {
             inflater, R.layout.fragment_shoe_detail, container, false
         )
 
-        val shoeDetailFragmentArgs by navArgs<ShoeDetailFragmentArgs>()
-
-        viewDetailModelFactory = ShoeDetailViewModelFactory(shoeDetailFragmentArgs.shoes)
-
-        viewModel =
-            ViewModelProvider(this, viewDetailModelFactory).get(ShoeDetailViewModel::class.java)
-
-        binding.shoeDetailViewModel = viewModel
+        binding.shoeViewModel = sharedViewModel
 
         binding.lifecycleOwner = this
 
         binding.saveButton.setOnClickListener { view: View ->
-            viewModel.onSave()
+            sharedViewModel.addShoe()
             Navigation.findNavController(view)
-                .navigate(
-                    ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeFragment(
-                        viewModel.shoe.value
-                    )
-                )
+                .navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeFragment())
         }
 
         binding.cancelButton.setOnClickListener { view: View ->
             Navigation.findNavController(view).navigate(
-                ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeFragment(
-                    viewModel.shoe.value
-                )
+                ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeFragment()
             )
         }
 

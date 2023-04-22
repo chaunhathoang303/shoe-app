@@ -9,5 +9,3 @@ data class Shoe(
     val images: List<String> = mutableListOf()
 ) : Parcelable
 
-//@Parcelize
-//class Shoes: ArrayList<Shoe>(), Parcelable

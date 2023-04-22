@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--this fragment usr linearLayout-->
-
+<!-- ConstraintLayout for shoe fragment-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,42 +13,45 @@
             type="com.udacity.shoestore.models.ShoeViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/cardview_shadow_start_color"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:gravity="center">
 
-        <FrameLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
 
-            <ListView
-                android:id="@+id/shoeList"
+            <LinearLayout
+                android:id="@+id/shoeListContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="50dp"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="10sp"
-                android:fillViewport="true"
-                tools:listitem="@layout/shoe_item" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="8dp"
-                android:layout_marginBottom="16dp"
-                android:background="@color/colorWhite"
-                android:contentDescription="@string/add"
-                android:padding="4dp"
-                android:src="@drawable/add"
-                app:backgroundTint="@color/colorWhite" />
+                android:layout_marginTop="70dp"
+                android:orientation="vertical">
 
-        </FrameLayout>
+            </LinearLayout>
 
-    </LinearLayout>
+        </ScrollView>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorWhite"
+            android:contentDescription="@string/add"
+            android:padding="4dp"
+            android:src="@drawable/add"
+            app:backgroundTint="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -21,7 +21,7 @@ class OnBoardingFragment : Fragment() {
         )
         binding.onBoardingButton.setOnClickListener { view: View ->
             Navigation.findNavController(view)
-                .navigate(R.id.action_onBoardingFragment_to_instructionFragment)
+                .navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToInstructionFragment())
         }
         return binding.root
 

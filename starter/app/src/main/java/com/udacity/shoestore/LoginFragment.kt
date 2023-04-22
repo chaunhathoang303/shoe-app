@@ -6,16 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentLoginBinding
-import com.udacity.shoestore.models.LoginViewModel
 
 class LoginFragment : Fragment() {
-
-    private lateinit var viewModel: LoginViewModel
 
     private lateinit var binding: FragmentLoginBinding
 
@@ -27,25 +21,13 @@ class LoginFragment : Fragment() {
             inflater, R.layout.fragment_login, container, false
         )
 
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
-        binding.loginViewModel = viewModel
-
-        binding.lifecycleOwner = this
-
         binding.longinButton.setOnClickListener { view: View ->
-            viewModel.getUserName(binding.editTextEmailAddress.text.toString())
-            viewModel.getPassword(binding.editTextPassword.text.toString())
-            viewModel.onLogin()
-            viewModel.eventLogin.observe(viewLifecycleOwner, Observer { isLogin ->
-                if (isLogin) {
-                    Navigation.findNavController(view)
-                        .navigate(LoginFragmentDirections.actionLoginFragmentToOnBoardingFragment())
+            if (binding.editTextEmailAddress.text.toString() == "abc@gmail.com" && (binding.editTextPassword.text.toString() == "123456")) {
+                Navigation.findNavController(view)
+                    .navigate(LoginFragmentDirections.actionLoginFragmentToOnBoardingFragment())
+            }
 
-                }
-            })
         }
-
 
         return binding.root
     }

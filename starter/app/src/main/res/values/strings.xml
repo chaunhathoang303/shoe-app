@@ -26,4 +26,5 @@
     <string name="shoe_store">Shoe Store</string>
     <string name="email_hint">please enter shoe email</string>
     <string name="password_hint">please enter shoe password</string>
+    <string name="log_out">LogOut</string>
 </resources>

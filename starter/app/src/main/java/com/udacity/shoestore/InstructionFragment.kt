@@ -21,7 +21,7 @@ class InstructionFragment : Fragment() {
         )
         binding.instructionButton.setOnClickListener { view: View ->
             Navigation.findNavController(view)
-                .navigate(InstructionFragmentDirections.actionInstructionFragmentToShoeFragment(null))
+                .navigate(InstructionFragmentDirections.actionInstructionFragmentToShoeFragment())
         }
         return binding.root
     }
